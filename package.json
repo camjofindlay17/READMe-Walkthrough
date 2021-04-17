@@ -1,0 +1,22 @@
+{
+  "name": "readme-walkthrough",
+  "version": "1.0.0",
+  "description": "walk through allowing user to create custom ReadMe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camjofindlay17/readme-walkthrough.git"
+  },
+  "author": "camjofindlay17",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camjofindlay17/readme-walkthrough/issues"
+  },
+  "homepage": "https://github.com/camjofindlay17/readme-walkthrough#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  }
+}
