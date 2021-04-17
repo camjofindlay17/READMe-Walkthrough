@@ -1,14 +1,5 @@
-{
+# ls
+  
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg) 
 
-Title: dd,
-
-Description: dd,
-
-Installation: dd,
-
-Usage: dd,
-
-License: MIT,
-
-Contributing: dd
-}
+  
