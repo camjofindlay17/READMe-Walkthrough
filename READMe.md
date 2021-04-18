@@ -32,7 +32,7 @@ The user is given a series of prompts in the command line and asked to add any p
 
 If you have any questions about this application:
 
-Please check out my repository at https://github.com/camjofinlday17 or feel free to email me at camjofindlay@gmail.com
+Please check out my repository at https://github.com/camjofindlay17 or feel free to email me at camjofindlay@gmail.com
 
 ## Installation
 
