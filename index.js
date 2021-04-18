@@ -1,115 +1,189 @@
+//NPM Packages
+
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const questions = [{
+
+//User-Prompted Questions
+
+const questions = [
+    {
     type: 'input',
     message: "What is the title of your Project?",
     name: 'title',
+    validate: function lengthCheck(text) {
+        if (text.length < 1) {
+            console.log ("You must enter a response here.")
+        } else {
+            return true
+        }
+    }
   },
-//   {
-//     type: 'input',
-//     message: "Please describe your project:",
-//     name: "descrption",
-//   },
-//   {
-//     type: 'input',
-//     message: "Please include any installation requirements:",
-//     name: 'installation',
-//   },
-//   {
-//     type: 'input',
-//     message: "Please descibe the projects usage:",
-//     name: 'usage',
-//   },
-//   {
-//     type: 'input',
-//     message: "Please include any contributors here:",
-//     name: 'contributing',
-//   },
-//   {
-//     type: 'input',
-//     message: "Please provide any tests run for your code here.",
-//     name: 'tests',
-//   },
+  {
+    type: 'input',
+    message: "Please describe your project:",
+    name: "description",
+    validate: function lengthCheck(text) {
+        if (text.length < 1) {
+            console.log ("You must enter a response here.")
+        } else {
+            return true
+        }
+    }
+  },
+  {
+    type: 'input',
+    message: "Please include any installation requirements:",
+    name: 'installation',
+  },
+  {
+    type: 'input',
+    message: "Please descibe the projects usage:",
+    name: 'usage',
+    validate: function lengthCheck(text) {
+        if (text.length < 1) {
+            console.log ("You must enter a response here.")
+        } else {
+            return true
+        }
+    }
+  },
+  {
+    type: 'input',
+    message: "Please include any contributors here:",
+    name: 'contributing',
+  },
+  {
+    type: 'input',
+    message: "Please provide any tests run for your code here:",
+    name: 'tests',
+  },
   {
     type: 'list',
     message: "Please select the license that your application is covered under.",
-    choices: ["Apache License 2.0", "Boost Software License 2.0", "GNU General Public License v3.0", "MIT License", "Mozilla Public License 2.0"],
+    choices: ["Apache License 2.0", "Boost Software License 1.0", "GNU General Public License v3.0", "MIT License", "Mozilla Public License 2.0", "None"],
     name: 'license',
   },
-//   {
-//     type: 'input',
-//     message: "Please proivde contact information for users to contact you ",
-//     name: 'questions',
-//   },
+  {
+    type: 'input',
+    message: "Please include your Github profile name:",
+    name: "github",
+    validate: function lengthCheck(text) {
+        if (text.length < 1) {
+            console.log ("You must enter a response here.")
+        } else {
+            return true
+        }
+    }
+  },
+  {
+    type: 'input',
+    message: "Please include your email:",
+    name: 'email',
+    validate: function validEmail(text) {
+        if (text.includes('@') && text.includes('.com')){
+          return true
+        } else {
+          console.log( "You have entered an invalid email address!" )
+        }
+    }
+  },
   ];
 
-  function gB(license) {
 
-    if (license = "Apache License 2.0") {
-        badge = "Apache%202.0-blue.svg"
-    } else if (license = "Boost Software License 2.0") {
-        badge = "Boost%202.0-lightblue.svg"
-    } else if (license = "GNU General Public License v3.0") {
-        badge = "GPLv3-blue.svg"    
-    } else if (license = "MIT License") {
-        badge = "MIT-yellow.svg"
+///// FUNCTION TO CREATE BADGE ON README //////
+
+  function generateBadge(license) {
+    if (license == "Apache License 2.0") {
+        img = "https://img.shields.io/badge/License-Apache%202.0-blue.svg"
+        desc = "https://choosealicense.com/licenses/apache-2.0/"
+    } else if (license == "Boost Software License 1.0") {
+        img = "https://img.shields.io/badge/License-Boost%201.0-lightblue.svg"
+        desc = "https://choosealicense.com/licenses/bsl-1.0/"
+    } else if (license == "GNU General Public License v3.0") {
+        img = "https://img.shields.io/badge/License-GPLv3-blue.svg" 
+        desc = "https://choosealicense.com/licenses/agpl-3.0/"
+    } else if (license == "MIT License") {
+        img = "https://img.shields.io/badge/License-MIT-yellow.svg"
+        desc = "https://choosealicense.com/licenses/mit/"
+    } else if (license == "Mozilla Public License 2.0") {
+        img = "https://img.shields.io/badge/License-MIT-yellow.svg"
+        desc = "https://choosealicense.com/licenses/mpl-2.0/"
     } else {
-        badge = "MPL%202.0-brightgreen.svg"
+        img = ""
+        desc = ""
     }
 
-    return "https://img.shields.io/badge/License-" + badge
+    return img
   }
 
-// function generateLicenseUrl(license) {
-//     let path;
-    
-//     switch (license) {
-//       case "GNU AGPLv3":
-//         path = "agpl-3.0";
-//         break;
-//       case "GNU GPLv3":
-//         path = "gpl-3.0";
-//         break;
-//       case "GNU LGPLv3":
-//         path = "lgpl-3.0";
-//         break;
-//       case "Mozilla Public License 2.0":
-//         path = "mpl-2.0";
-//         break;
-//       case "Apache License 2.0":
-//         path = "apache-2.0";
-//         break;
-//       case "MIT License":
-//         path = "mit";
-//         break;
-//       case "Boost Software License 1.0":
-//         path = "bsl-1.0";
-//         break;
-//       case "The Unlicense":
-//         path = "unlicense";
-//         break;
-//     }
-  
-//     return `https://choosealicense.com/licenses/${path}/`;
-//   }
 
-  function generateMarkdown(response) {
-    let img = gB(response.license)
-    // var licenseUrl = generateLicenseUrl(response.license)
-    var result = (`# ${response.title}
-  \n![License](${img}) \n
-  `)
+///// FUNCTION TO GENERATE URL DIRECTIMG USER TO LICENSE INFO  //////
 
-  return result ;
+function generateDescription(license) {
+    if (license == "Apache License 2.0") {
+        desc = "https://choosealicense.com/licenses/apache-2.0/"
+    } else if (license == "Boost Software License 1.0") {
+        desc = "https://choosealicense.com/licenses/bsl-1.0/"
+    } else if (license == "GNU General Public License v3.0") {
+        desc = "https://choosealicense.com/licenses/agpl-3.0/"
+    } else if (license == "MIT License") {
+        desc = "https://choosealicense.com/licenses/mit/"
+    } else if (license == "Mozilla Public License 2.0") {
+        desc = "https://choosealicense.com/licenses/mpl-2.0/"
+    } else {
+        desc = ""
+    }
+
+    return desc
 }
+
+
+///// FUNCTION TO CREATE THE MARKDOWN BASED ON USER RESPONSE  //////
+
+function generateMarkdown(response) {
+
+const img = generateBadge(response.license)
+const desc = generateDescription(response.license)
+
+const page = 
+(`# ${response.title}
+\n![License](${img}) 
+\n${response.description}
+\n## Table of Contents
+\n* [Installation](#Installation)
+\n* [Usage](#Usage)
+\n* [Contributors](#Contributors)
+\n* [Tests](#Tests)
+\n* [License](#License)
+\n* [Questions](#Questions)
+\n## Installation
+\n${response.installation}
+\n## Usage
+\n${response.usage}
+\n## Contributing
+\n${response.contributing}
+\n## Tests
+\n${response.tests}
+\n## License
+\nThis application is licensed through ${response.license}. Click to view the license page: [License](${desc})
+\n## Questions
+\nIf you have any questions about this application:
+\nPlease check out my repository at https://github.com/${response.github} or feel free to email me at ${response.email}
+`)
+
+  return page ;
+}
+
+///// FUNCTION INITIATING THE QUESTION PROMPT AND WRITING THE README FILE  //////
+
 
 function init() {
     inquirer
     .prompt(questions)
     .then((response) => {
         const markdown = generateMarkdown(response);
-        fs.writeFile('ReadMe.md', markdown, (err) =>
+        fs.writeFile('TestREADMe.md', markdown, (err) =>
             err ? console.log(err) : console.log('Success'))
     })
 }
