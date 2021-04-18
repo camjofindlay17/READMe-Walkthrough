@@ -50,6 +50,6 @@ Please check out my repository at https://github.com/camjofinlday17 or feel free
 
 ## Installation
 
-Use the url (https://drive.google.com/file/d/1BU0iw0XgF5OAgzdwp2PiRoXbxp8JlSPX/preview" width="640" height="480") to view a video demonstration.
+Use the url (https://drive.google.com/file/d/1BU0iw0XgF5OAgzdwp2PiRoXbxp8JlSPX/preview") to view a video demonstration.
 
 Use the url (https://github.com/camjofindlay17/readme-walkthrough) to access the repository.
