@@ -12,8 +12,6 @@
 
 * [Tests](#Tests)
 
-* [License](#License)
-
 * [Questions](#Questions)
 
 ## Description
