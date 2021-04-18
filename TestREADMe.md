@@ -2,9 +2,9 @@
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg) 
 
-This project creates a professional READMe for the user. 
-
 ## Table of Contents
+
+* [Description](#Description)
 
 * [Installation](#Installation)
 
@@ -18,9 +18,13 @@ This project creates a professional READMe for the user.
 
 * [Questions](#Questions)
 
+## Description
+
+This project creates a professional READMe for the user.
+
 ## Installation
 
-In order to run the program, the user must install the Inquirer package through their command line. This can be done by opening their terminal and entering “npm i inquirer” in the command line. 
+In order to run the program, the user must install the Inquirer package through their command line. This can be done by opening their terminal and entering “npm i inquirer” in the command line.
 
 ## Usage
 
@@ -36,7 +40,7 @@ The user is given a series of prompts in the command line and asked to add any p
 
 ## License
 
-This application is licensed through MIT License. Click to view the license page: [License](https://choosealicense.com/licenses/mit/)
+This application is licensed through [MIT License](https://choosealicense.com/licenses/mit/). Click link to view.
 
 ## Questions
 

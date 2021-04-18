@@ -149,14 +149,16 @@ const desc = generateDescription(response.license)
 const page = 
 (`# ${response.title}
 \n![License](${img}) 
-\n${response.description}
 \n## Table of Contents
+\n* [Description](#Description)
 \n* [Installation](#Installation)
 \n* [Usage](#Usage)
 \n* [Contributors](#Contributors)
 \n* [Tests](#Tests)
 \n* [License](#License)
 \n* [Questions](#Questions)
+\n## Description
+\n${response.description}
 \n## Installation
 \n${response.installation}
 \n## Usage
@@ -166,7 +168,7 @@ const page =
 \n## Tests
 \n${response.tests}
 \n## License
-\nThis application is licensed through ${response.license}. Click to view the license page: [License](${desc})
+\nThis application is licensed through [${response.license}](${desc}). Click link to view.
 \n## Questions
 \nIf you have any questions about this application:
 \nPlease check out my repository at https://github.com/${response.github} or feel free to email me at ${response.email}
