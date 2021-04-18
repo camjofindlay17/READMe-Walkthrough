@@ -96,22 +96,16 @@ const questions = [
   function generateBadge(license) {
     if (license == "Apache License 2.0") {
         img = "https://img.shields.io/badge/License-Apache%202.0-blue.svg"
-        desc = "https://choosealicense.com/licenses/apache-2.0/"
     } else if (license == "Boost Software License 1.0") {
         img = "https://img.shields.io/badge/License-Boost%201.0-lightblue.svg"
-        desc = "https://choosealicense.com/licenses/bsl-1.0/"
     } else if (license == "GNU General Public License v3.0") {
         img = "https://img.shields.io/badge/License-GPLv3-blue.svg" 
-        desc = "https://choosealicense.com/licenses/agpl-3.0/"
     } else if (license == "MIT License") {
         img = "https://img.shields.io/badge/License-MIT-yellow.svg"
-        desc = "https://choosealicense.com/licenses/mit/"
     } else if (license == "Mozilla Public License 2.0") {
         img = "https://img.shields.io/badge/License-MIT-yellow.svg"
-        desc = "https://choosealicense.com/licenses/mpl-2.0/"
     } else {
-        img = ""
-        desc = ""
+        img = false
     }
 
     return img
@@ -132,7 +126,7 @@ function generateDescription(license) {
     } else if (license == "Mozilla Public License 2.0") {
         desc = "https://choosealicense.com/licenses/mpl-2.0/"
     } else {
-        desc = ""
+        desc = false
     }
 
     return desc
@@ -185,7 +179,7 @@ function init() {
     .prompt(questions)
     .then((response) => {
         const markdown = generateMarkdown(response);
-        fs.writeFile('TestREADMe.md', markdown, (err) =>
+        fs.writeFile('SampleREADMe.md', markdown, (err) =>
             err ? console.log(err) : console.log('Success'))
     })
 }
